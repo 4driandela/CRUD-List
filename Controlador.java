@@ -8,8 +8,8 @@ public class Controlador {
         Galeria lista = new Galeria();
 
         do{
-            Mensaje.mostrarMenu();
-            eleccion = eleccionMenu(1,6);
+                eleccion = eleccionMenu(1, 6, Mensaje.mostrarMenu());
+
 
           switch(eleccion){
               case 1:
@@ -38,16 +38,16 @@ public class Controlador {
 
     }
 
-    private static int eleccionMenu(int minimo, int maximo){
+    private static int eleccionMenu(int minimo, int maximo, String texto){
         int eleccion;
         boolean numeroCorrecto = false;
 
         do {
-            eleccion = Herramientas.pedirInt("¿Qué opcion quieres realizar?");
+            eleccion = Herramientas.pedirInt(texto);
             numeroCorrecto = Verificar.verificarInt(minimo,maximo,eleccion);
 
             if(!numeroCorrecto){
-                System.out.println("Lo siento, el numero no se encuentra en las opciones");
+                System.out.println("Las opciones varían desde " + minimo + " hasta " + maximo + ", ambos incluidos.");
             }
         }while(!numeroCorrecto);
         return eleccion;
@@ -56,8 +56,7 @@ public class Controlador {
         int eleccion;
         String titulo;
         if(!Verificar.verificarListVacia(lista)) {
-            Mensaje.mostrarMenuBusqueda();
-            eleccion = eleccionMenu(1, 3);
+            eleccion = eleccionMenu(1, 3,Mensaje.mostrarMenuBusqueda() );
 
             switch (eleccion) {
                 case 1:
@@ -78,9 +77,8 @@ public class Controlador {
         int eleccion;
         int posicion;
 
-        if(Verificar.verificarListVacia(lista)) {
-            Mensaje.mostrarMenuModificar();
-            eleccion = eleccionMenu(1, 4);
+        if(!Verificar.verificarListVacia(lista)) {
+            eleccion = eleccionMenu(1, 4,Mensaje.mostrarMenuModificar());
 
             switch (eleccion) {
                 case 1:
@@ -117,10 +115,13 @@ public class Controlador {
         public static void borrarPosicion (Galeria lista){
             int posicion;
 
-            if(Verificar.verificarListVacia())
-            posicion = AccionList.buscarNombre(lista, "¿Que película quieres borrar?");
-            if(posicion != -1) {
-                AccionList.borrarPelicula(lista, posicion);
+            if(!Verificar.verificarListVacia(lista)) {
+                posicion = AccionList.buscarNombre(lista, "¿Que película quieres borrar?");
+                if (posicion != -1) {
+                    AccionList.borrarPelicula(lista, posicion);
+                }
+            }else{
+                Mensaje.advertenciaListVacia();
             }
     }
 }
