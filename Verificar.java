@@ -14,14 +14,13 @@ public class Verificar {
         }
         return correcto;
     }
-    public static boolean verificarListVacia(Galeria lista){
+    public static boolean verificarListVacia(Galeria lista) {
         int longitud = lista.longitudLista();
         boolean vacio = false;
 
-        if(longitud <= 0){
+        if (longitud <= 0) {
             vacio = true;
         }
         return vacio;
     }
-
 }

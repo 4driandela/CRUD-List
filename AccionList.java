@@ -19,11 +19,11 @@ public class AccionList {
         boolean encontrado = false;
         String titulo;
 
-        titulo = Herramientas.pedirString(texto);
+        titulo = Herramientas.convertirAMinus(Herramientas.pedirString(texto));
 
 
         do{
-            if(lista.getCartelera().get(posicion).getNombre().equals(titulo)){
+            if(Herramientas.convertirAMinus(lista.getCartelera().get(posicion).getNombre()).equals(titulo)){
                 bucle = true;
                 System.out.println(lista.getCartelera().get(posicion));
                 encontrado = true;
@@ -39,18 +39,16 @@ public class AccionList {
         }
         return posicion;
     }
-
-
     public static void buscarGenero(Galeria lista){
         //Creado con for, ya que para un género pueden haber varios registros
         int longitudLista = lista.longitudLista();
         String genero;
         boolean encontrado = false;
 
-        genero = Herramientas.pedirString("Dime el género que buscas");
+        genero = Herramientas.convertirAMinus(Herramientas.pedirString("Dime el género que buscas"));
 
         for(int i = 0; i < longitudLista; i++){
-            if(lista.getCartelera().get(i).getGénero().equals(genero)){
+            if(Herramientas.convertirAMinus(lista.getCartelera().get(i).getGénero()).equals(genero)){
                 System.out.println(lista.getCartelera().get(i));
                 encontrado = true;
             }
@@ -66,10 +64,10 @@ public class AccionList {
         String director;
         boolean encontrado = false;
 
-        director = Herramientas.pedirString("Dime el director que buscas");
+        director = Herramientas.convertirAMinus(Herramientas.pedirString("Dime el director que buscas"));
 
        for(int i = 0; i < longitudLista;i++){
-           if(lista.getCartelera().get(i).getDirector().equals(director)){
+           if(Herramientas.convertirAMinus(lista.getCartelera().get(i).getDirector()).equals(director)){
                System.out.println(lista.getCartelera().get(i));
                encontrado = true;
            }
