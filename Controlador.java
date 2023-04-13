@@ -1,8 +1,5 @@
 
 public class Controlador {
-
-    //lista.getCartelera().get(0) devuelve el contenido del AList en la posición 0
-
     public static void main(String[] args) {
         int eleccion;
         Galeria lista = new Galeria();
