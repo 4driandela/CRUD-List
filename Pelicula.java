@@ -1,5 +1,6 @@
-import java.time.LocalDate;
-
+/**
+ * Clase objeto que recoge la información relativa a las películas.
+ */
 public class Pelicula {
 
     private String nombre;
