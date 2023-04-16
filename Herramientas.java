@@ -1,18 +1,19 @@
-import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Herramientas contiene métodos útiles que pueden aprovechar el resto de clases.
+ *
+ * @author Adriandela
+ */
 public class Herramientas {
     //#
 
     /**
-     * Herramientas contiene métodos útiles que pueden aprovechar el resto de clases.
      * pedirInt es un método estático que recoge por teclado un número y lo devuelve ese número entero.
      *
+     * @param texto String que recoge la frase que mostrará por pantalla el método.
+     * @return numero: Int que devuelve el número introducido por teclado.
      * @author Adriandela
-     *
-     * @param texto  String que recoge la frase que mostrará por pantalla el método
-
-     *
      */
     public static int pedirInt(String texto) {
         int numero = 0;
@@ -29,18 +30,15 @@ public class Herramientas {
         }
         return numero;
     }
-    /**
-     * Herramientas es una clase que contiene métodos útiles que pueden aprovechar el resto de clases.
-     * pedirString es un método estático que recoge por teclado una cadena de texto(String) y la devuelve posteriormente
-     *
-     * @author Adriandela
-     *
-     * @param texto  String que recoge la frase que mostrará por pantalla el método
 
+    /**
+     * pedirString es un método estático que recoge por teclado una cadena de texto(String) y la devuelve posteriormente.
      *
+     * @param texto String que recoge la frase que mostrará por pantalla el método
+     * @return palabra: String que recoge la palabra introducida por teclado.
+     * @author Adriandela
      */
-    public static String pedirString(String texto){
-        //Con texto
+    public static String pedirString(String texto) {
         String palabra;
 
         System.out.println(texto);
@@ -49,16 +47,15 @@ public class Herramientas {
 
         return palabra;
     }
+
     /**
-     * Herramientas es una clase que contiene métodos útiles que pueden aprovechar el resto de clases.
      * convertirAMinus es un método estático que convierte a minúsculas todas las letras que contiene la cadena y la devuelve posteriormente.
      *
+     * @param palabra String que contiene la palabra a convertir a minúsculas
+     * @return minus: String convertido a minúsculas.
      * @author Adriandela
-     *
-     * @param palabra  String que contiene la palabra a convertir a minúsculas
-
      */
-    public static String convertirAMinus(String palabra){
+    public static String convertirAMinus(String palabra) {
         String minus;
 
         minus = palabra.toLowerCase();
