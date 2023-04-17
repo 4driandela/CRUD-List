@@ -13,7 +13,7 @@ public class Controlador {
             switch (eleccion) {
                 case 1:
                     //Añade pelicula al ArrayList
-                    AccionList.añadirPelLista(lista);
+                   añadirPelicula(lista);
                     break;
                 case 2:
                     //Busqueda
@@ -49,7 +49,7 @@ public class Controlador {
      * @author Adriandela
      */
 
-    private static int eleccionMenu(int minimo, int maximo, String texto) {
+    public static int eleccionMenu(int minimo, int maximo, String texto) {
         int eleccion;
         boolean numeroCorrecto = false;
 
@@ -63,6 +63,17 @@ public class Controlador {
         } while (!numeroCorrecto);
         return eleccion;
     }
+    public static void añadirPelicula(Galeria lista){
+        String titulo;
+        String director;
+        String genero;
+
+        titulo = Herramientas.pedirString("¿Cuál es el título?");
+        director = Herramientas.pedirString("¿Cuál es el director?");
+        genero = Herramientas.pedirString("¿Cuál es el género?");
+
+        AccionList.añadirPelLista(lista, titulo, director, genero);
+    }
 
     /**
      * buscarPelicula es un método estático que nos pide un número para la elección de las opciones y una palabra con
@@ -72,21 +83,27 @@ public class Controlador {
      * @param lista Objeto de la clase Galeria que alberga un ArrayList<Pelicula>.
      * @author Adriandela
      */
-    private static void buscarPelicula(Galeria lista) {
+    public static void buscarPelicula(Galeria lista) {
         int eleccion;
         String titulo;
+        String genero;
+        String director;
+
         if (!Verificar.verificarListVacia(lista)) {
             eleccion = eleccionMenu(1, 3, Mensaje.mostrarMenuBusqueda());
 
             switch (eleccion) {
                 case 1:
-                    AccionList.buscarNombre(lista, "Dime el título que buscas");
+                    titulo = Herramientas.pedirString("Dime el título que buscas");
+                    AccionList.buscarNombre(lista, titulo);
                     break;
                 case 2:
-                    AccionList.buscarDirector(lista);
+                    director= Herramientas.pedirString("Dime el director que buscas");
+                    AccionList.buscarDirector(lista, director);
                     break;
                 case 3:
-                    AccionList.buscarGenero(lista);
+                    genero= Herramientas.pedirString("Dime el género que buscas");
+                    AccionList.buscarGenero(lista, genero);
                     break;
             }
         } else {
@@ -105,27 +122,38 @@ public class Controlador {
     public static void modificarPosicion(Galeria lista) {
         int eleccion;
         int posicion;
+        String titulo;
+        String newTitulo;
+        String newDirector;
+        String newGenero;
+
 
         if (!Verificar.verificarListVacia(lista)) {
             eleccion = eleccionMenu(1, 4, Mensaje.mostrarMenuModificar());
 
             switch (eleccion) {
                 case 1:
-                    posicion = AccionList.buscarNombre(lista, "Dime la película que buscas");
+                    titulo = Herramientas.pedirString("Dime la película que buscas");
+                    posicion = AccionList.buscarNombre(lista,titulo);
                     if (posicion != -1) {
-                        AccionList.modificarNombre(lista, posicion, "Cuál es el nuevo valor para el título");
+                        newTitulo = Herramientas.pedirString("Cuál es el nuevo valor para el título");
+                        AccionList.modificarNombre(lista, posicion, newTitulo);
                     }
                     break;
                 case 2:
-                    posicion = AccionList.buscarNombre(lista, "Dime la película que buscas");
+                    titulo = Herramientas.pedirString("Dime la película que buscas");
+                    posicion = AccionList.buscarNombre(lista, titulo);
                     if (posicion != -1) {
-                        AccionList.modificarDirector(lista, posicion, "Cuál es el nuevo valor para el director");
+                        newDirector = Herramientas.pedirString("Cuál es el nuevo valor para el director");
+                        AccionList.modificarDirector(lista, posicion, newDirector);
                     }
                     break;
                 case 3:
-                    posicion = AccionList.buscarNombre(lista, "Dime la película que buscas");
+                    titulo = Herramientas.pedirString("Dime la película que buscas");
+                    posicion = AccionList.buscarNombre(lista,titulo);
                     if (posicion != -1) {
-                        AccionList.modificarGenero(lista, posicion, "Cuál es el nuevo valor para el género");
+                        newGenero = Herramientas.pedirString("Cuál es el nuevo valor para el género");
+                        AccionList.modificarGenero(lista, posicion, newGenero);
                     }
                     break;
                 case 4:
