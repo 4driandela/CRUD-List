@@ -10,14 +10,7 @@ public class AccionList {
      * @param lista Objeto de la clase Galeria que contiene un ArrayList<Pelicula>.
      * @author Adriandela
      */
-    public static void añadirPelLista(Galeria lista) {
-        String titulo;
-        String director;
-        String genero;
-
-        titulo = Herramientas.pedirString("¿Cuál es el título?");
-        director = Herramientas.pedirString("¿Cuál es el director?");
-        genero = Herramientas.pedirString("¿Cuál es el género?");
+    public static void añadirPelLista(Galeria lista, String titulo, String director, String genero ) {
 
         lista.addPelicula(new Pelicula(titulo, director, genero));
     }
@@ -26,19 +19,18 @@ public class AccionList {
      * buscarNombre es un método estático que recorre el ArrayList en busca de coincidencias con el String título.
      *
      * @param lista Objeto de la clase Galeria que contiene un ArrayList<Pelicula>.
-     * @param texto String que recoge el mensaje que se imprimirá por pantalla.
      * @return posicion: Int que hace referencia a la posición en la lista que coincide que con nuestra búsqueda.
      * @author Adriandela
      */
-    public static int buscarNombre(Galeria lista, String texto) {
+    public static int buscarNombre(Galeria lista,String titulo) {
         //Creado con while, ya que sólo puede haber una coincidencia de título
         boolean bucle = false;
         int posicion = 0;
         int longitudLista = lista.longitudLista();
         boolean encontrado = false;
-        String titulo;
 
-        titulo = Herramientas.convertirAMinus(Herramientas.pedirString(texto));
+
+        titulo = Herramientas.convertirAMinus(titulo);
 
         do {
             if (Herramientas.convertirAMinus(lista.getCartelera().get(posicion).getNombre()).equals(titulo)) {
@@ -64,13 +56,12 @@ public class AccionList {
      * @param lista Objeto de la clase Galeria que contiene un ArrayList<Pelicula>.
      * @author Adriandela
      */
-    public static void buscarGenero(Galeria lista) {
+    public static boolean buscarGenero(Galeria lista, String genero) {
         //Creado con for, ya que para un género pueden haber varios registros
         int longitudLista = lista.longitudLista();
-        String genero;
         boolean encontrado = false;
 
-        genero = Herramientas.convertirAMinus(Herramientas.pedirString("Dime el género que buscas"));
+        genero = Herramientas.convertirAMinus(genero);
 
         for (int i = 0; i < longitudLista; i++) {
             if (Herramientas.convertirAMinus(lista.getCartelera().get(i).getGénero()).equals(genero)) {
@@ -81,6 +72,7 @@ public class AccionList {
         if (!encontrado) {
             System.out.println("Los sentimos, no hemos encontrado la palabra que buscabas");
         }
+        return encontrado;
 
     }
 
@@ -90,13 +82,12 @@ public class AccionList {
      * @param lista Objeto de la clase Galeria que contiene un ArrayList<Pelicula>.
      * @author Adriandela
      */
-    public static void buscarDirector(Galeria lista) {
+    public static boolean buscarDirector(Galeria lista, String director) {
         //Creado con for, ya que para un director pueden haber varios registros
         int longitudLista = lista.longitudLista();
-        String director;
         boolean encontrado = false;
 
-        director = Herramientas.convertirAMinus(Herramientas.pedirString("Dime el director que buscas"));
+        director = Herramientas.convertirAMinus(director);
 
         for (int i = 0; i < longitudLista; i++) {
             if (Herramientas.convertirAMinus(lista.getCartelera().get(i).getDirector()).equals(director)) {
@@ -107,6 +98,7 @@ public class AccionList {
         if (!encontrado) {
             System.out.println("Los sentimos, no hemos encontrado la palabra que buscabas");
         }
+        return encontrado;
     }
 
     /**
@@ -115,12 +107,10 @@ public class AccionList {
      *
      * @param lista    Objeto de la clase Galeria que contiene un ArrayList<Pelicula>.
      * @param posicion Int que recoge la posición en la lista que se va a modificar.
-     * @param texto    String que recoge el mensaje que se mostrará por pantalla.
      * @author Adriandela
      */
-    public static void modificarNombre(Galeria lista, int posicion, String texto) {
-        String newTitulo;
-        newTitulo = Herramientas.pedirString(texto);
+    public static void modificarNombre(Galeria lista, int posicion, String newTitulo) {
+
         lista.getCartelera().get(posicion).setNombre(newTitulo);
         System.out.println(lista.getCartelera().get(posicion));
     }
@@ -131,13 +121,11 @@ public class AccionList {
      *
      * @param lista    Objeto de la clase Galeria que contiene un ArrayList<Pelicula>.
      * @param posicion Int que recoge la posición en la lista que se va a modificar.
-     * @param texto    String que recoge el mensaje que se mostrará por pantalla.
      * @author Adriandela
      */
-    public static void modificarDirector(Galeria lista, int posicion, String texto) {
-        String newTitulo;
-        newTitulo = Herramientas.pedirString(texto);
-        lista.getCartelera().get(posicion).setDirector(newTitulo);
+    public static void modificarDirector(Galeria lista, int posicion, String newDirector) {
+
+        lista.getCartelera().get(posicion).setDirector(newDirector);
         System.out.println(lista.getCartelera().get(posicion));
     }
 
@@ -147,13 +135,11 @@ public class AccionList {
      *
      * @param lista    Objeto de la clase Galeria que contiene un ArrayList<Pelicula>.
      * @param posicion Int que recoge la posición en la lista que se va a modificar.
-     * @param texto    String que recoge el mensaje que se mostrará por pantalla.
      * @author Adriandela
      */
-    public static void modificarGenero(Galeria lista, int posicion, String texto) {
-        String newTitulo;
-        newTitulo = Herramientas.pedirString(texto);
-        lista.getCartelera().get(posicion).setGénero(newTitulo);
+    public static void modificarGenero(Galeria lista, int posicion, String newGenero) {
+
+        lista.getCartelera().get(posicion).setGénero(newGenero);
         System.out.println(lista.getCartelera().get(posicion));
     }
 
