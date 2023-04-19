@@ -22,11 +22,10 @@ public class Herramientas {
             Scanner lector = new Scanner(System.in);
             numero = lector.nextInt();
             lector.nextLine();
-            return numero;
         } catch (java.util.InputMismatchException e) {
-            System.out.println("Hemos tenido un error con la elección, por favor vuelva a introducir el número #001");
+            System.out.println("Hemos tenido un error con la elección, por favor vuelva a introducir el número #00");
         } catch (Exception e) {
-            System.out.println("Hemos tenido un error con la elección, por favor vuelva a introducir el número #002");
+            System.out.println("Hemos tenido un error con la elección, por favor vuelva a introducir el número #01");
         }
         return numero;
     }
@@ -39,12 +38,15 @@ public class Herramientas {
      * @author Adriandela
      */
     public static String pedirString(String texto) {
-        String palabra;
+        String palabra = "";
+        try {
+            System.out.println(texto);
+            Scanner lector = new Scanner(System.in);
+            palabra = lector.nextLine();
 
-        System.out.println(texto);
-        Scanner lector = new Scanner(System.in);
-        palabra = lector.nextLine();
-
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un error en el programa #10");
+        }
         return palabra;
     }
 
@@ -56,10 +58,14 @@ public class Herramientas {
      * @author Adriandela
      */
     public static String convertirAMinus(String palabra) {
-        String minus;
+        //No es requerido, pero me ayuda a la hora buscar las palabras al no tener que distinguir Mayus de Minus.
+        String minus = "";
+        try {
+            minus = palabra.toLowerCase();
 
-        minus = palabra.toLowerCase();
-
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un error en el programa #20");
+        }
         return minus;
     }
 
