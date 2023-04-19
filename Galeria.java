@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * @author Adriandela
  */
 public class Galeria {
+    //*
 
     private ArrayList<Pelicula> cartelera = new ArrayList<Pelicula>();
 
@@ -31,7 +32,11 @@ public class Galeria {
      * @author Adriandela
      */
     public void addPelicula(Pelicula pelicula) {
-        cartelera.add(pelicula);
+        try {
+            cartelera.add(pelicula);
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un error en el programa *00");
+        }
     }
 
     /**
@@ -41,7 +46,11 @@ public class Galeria {
      * @author Adriandela
      */
     public void removePelicula(int posicion) {
-        cartelera.remove(posicion);
+        try {
+            cartelera.remove(posicion);
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un error en el programa *10");
+        }
     }
 
     /**
@@ -51,9 +60,12 @@ public class Galeria {
      * @author Adriandela
      */
     public int longitudLista() {
-        int longitud;
-
-        longitud = cartelera.size();
+        int longitud = -1;
+        try {
+            longitud = cartelera.size();
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un error en el programa *20");
+        }
         return longitud;
     }
 
@@ -64,8 +76,12 @@ public class Galeria {
      * @author Adriandela
      */
     public void mostrarArrayList() {
-        for (Pelicula item : cartelera) {
-            System.out.println("Título: " + item.getNombre() + "; Director: " + item.getDirector() + "; Género: " + item.getGénero());
+        try {
+            for (Pelicula item : cartelera) {
+                System.out.println("Título: " + item.getNombre() + "; Director: " + item.getDirector() + "; Género: " + item.getGénero());
+            }
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un error en el programa *30");
         }
 
     }

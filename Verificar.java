@@ -4,6 +4,8 @@
  * @author Adriandela
  */
 public class Verificar {
+    //€
+
     /**
      * verificarInt es un método estático que comprueba si el número que le aportamos está dentro del rango de valores que le definimos.
      *
@@ -16,11 +18,12 @@ public class Verificar {
 
     public static boolean verificarInt(int minimo, int maximo, int numero) {
         boolean correcto = false;
-
-        if (numero >= minimo && numero <= maximo) {
-            correcto = true;
-        } else {
-            correcto = false;
+        try {
+            if (numero >= minimo && numero <= maximo) {
+                correcto = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un problema, con la verificación €00");
         }
         return correcto;
     }
@@ -36,8 +39,12 @@ public class Verificar {
         int longitud = lista.longitudLista();
         boolean vacio = false;
 
-        if (longitud <= 0) {
-            vacio = true;
+        try {
+            if (longitud <= 0) {
+                vacio = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Lo sentimos hemos tenido un error en el programa €10");
         }
         return vacio;
     }
